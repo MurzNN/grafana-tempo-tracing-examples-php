@@ -1,11 +1,9 @@
 <?php
 
-
 /**
  * Example of PHP tracing implementation for Grafana Tempo using OpenTelemetry
  * package ang Jaeger Exporter.
  */
-
 
 declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
@@ -77,6 +75,8 @@ if (SamplingResult::RECORD_AND_SAMPLE === $samplingResult->getDecision()) {
     $tracer = (new TracerProvider())
         ->addSpanProcessor(new BatchSpanProcessor($exporter, Clock::get()))
         ->getTracer('io.opentelemetry.contrib.php');
+
+    // Starting main span
     $spanMain = $tracer->startAndActivateSpan('span_main');
     echo sprintf(
         PHP_EOL . 'Exporting root trace: %s, Span: %s',
@@ -85,7 +85,7 @@ if (SamplingResult::RECORD_AND_SAMPLE === $samplingResult->getDecision()) {
     );
 
     for ($i = 0; $i < 5; $i++) {
-        // start a span, register some events
+       // Starting child span, register some events
         $timestamp = Clock::get()->timestamp();
         $span = $tracer->startAndActivateSpan('subspan for step ' . $i);
 
@@ -108,6 +108,7 @@ if (SamplingResult::RECORD_AND_SAMPLE === $samplingResult->getDecision()) {
         $span->addEvent('generated_session', $timestamp, new Attributes([
             'id' => md5((string) microtime(true)),
         ]));
+
         usleep(rand(1111,7777));
 
         if($i == 3) {
