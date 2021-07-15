@@ -33,6 +33,7 @@ After execution is completed, you can find that trace  in Grafana Explore web in
 by TraceID = `b43ad1cd66e73fb7173b97cc4b13c5de`.
 
 It should looks like this:
+
 ![Trace screenshot](assets/trace-screenshot.png)
 
 Source code is based on OpenTelemetry PHP Library's [AlwaysOnJaegerExample.php](https://github.com/open-telemetry/opentelemetry-php/blob/main/examples/AlwaysOnJaegerExample.php) file.
