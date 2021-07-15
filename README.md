@@ -15,6 +15,7 @@ php ./src/grafana-tempo-jaeger-example.php
 Requirements:
 - PHP 7.3 or above
 - Composer
+- Grafana Agent or Tempo instance with enabled zipkin receiver
 
 ### Example of output:
 ```
