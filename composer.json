@@ -1,0 +1,15 @@
+{
+    "name": "murznn/grafana-tempo-tracing-examples-php",
+    "authors": [
+        {
+            "name": "Alexey Murz Korepov",
+            "email": "MurzNN@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "open-telemetry/opentelemetry": "dev-main",
+        "guzzlehttp/guzzle": "7.4.x-dev"
+    }
+}
